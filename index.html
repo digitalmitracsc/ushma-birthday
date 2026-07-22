@@ -1,198 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday Ushma ❤️</title>
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box;}
-body{
-height:100vh;
-overflow:hidden;
-display:flex;
-justify-content:center;
-align-items:center;
-background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#000428);
-background-size:400% 400%;
-animation:bg 10s ease infinite;
-font-family:Arial,sans-serif;
-color:#fff;
-text-align:center;
-}
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-@keyframes bg{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
-}
+<title>✨ Happy Birthday Ushma Pal ✨</title>
 
-.star{
-position:absolute;
-width:3px;
-height:3px;
-background:white;
-border-radius:50%;
-animation:twinkle 2s infinite;
-}
+<link rel="stylesheet" href="style.css">
 
-@keyframes twinkle{
-50%{opacity:.2;}
-}
-
-.box{
-z-index:10;
-padding:20px;
-}
-
-h1{
-font-size:45px;
-margin-bottom:15px;
-animation:glow 2s infinite alternate;
-}
-
-@keyframes glow{
-from{text-shadow:0 0 10px #fff;}
-to{text-shadow:0 0 30px gold;}
-}
-
-#gift{
-font-size:100px;
-cursor:pointer;
-transition:.5s;
-}
-
-#gift:hover{
-transform:scale(1.15) rotate(8deg);
-}
-
-#msg{
-display:none;
-animation:fade 2s;
-}
-
-@keyframes fade{
-from{opacity:0;}
-to{opacity:1;}
-}
-
-.heart{
-position:absolute;
-color:red;
-font-size:24px;
-animation:float 6s linear infinite;
-}
-
-@keyframes float{
-0%{transform:translateY(100vh);}
-100%{transform:translateY(-120vh);}
-}
-</style>
 </head>
 
 <body>
 
-<div class="box">
+<div id="loader">
 
-<div id="start">
+<div class="loader-text">
 
-<h1>✨ A Magical Surprise ✨</h1>
-
-<p style="margin-bottom:20px;">Someone special has sent you a birthday gift...</p>
-
-<div id="gift">🎁</div>
-
-<p>Tap the Gift</p>
+✨ Preparing A Magical Surprise... ✨
 
 </div>
 
-<div id="msg">
+</div>
 
-<h1>🎉 HAPPY BIRTHDAY 🎉</h1>
+<div id="stars"></div>
 
-<h2 style="font-size:38px;color:#FFD700;margin:20px 0;">
-USHMA  ❤️
-</h2>
+<div id="container">
 
-<p style="font-size:22px;line-height:1.7">
+<h3 class="small">
 
-May your smile always shine like the stars ✨<br>
-May all your dreams come true 🌸<br>
-Stay blessed, stay happy and keep smiling forever ❤️
+Someone Special Has A Surprise For You...
+
+</h3>
+
+<h1 id="typing"></h1>
+
+<div id="gift">
+
+🎁
+
+</div>
+
+<p class="tap">
+
+Tap the Gift
 
 </p>
 
-<h1 style="margin-top:20px;">🎂🎈🎊</h1>
+</div>
 
-<h2 style="margin-top:20px;color:#ffb703;">
+<div id="birthday">
 
-Made with ❤️ by Your Jijaji
+<h1>
+
+🎉 HAPPY BIRTHDAY 🎉
+
+</h1>
+
+<h2>
+
+USHMA PAL
 
 </h2>
 
+<div class="cake">
+
+🎂
+
+</div>
+
+<p>
+
+May every dream come true ✨
+
+<br>
+
+May your smile always shine 🌟
+
+<br>
+
+Stay blessed forever 💙
+
+</p>
+
+<div id="message">
+
+Made with Love
+
+<br>
+
+By Your Jijaji 💝
+
 </div>
 
 </div>
 
-<script>
-
-for(let i=0;i<120;i++){
-
-let s=document.createElement("div");
-
-s.className="star";
-
-s.style.left=Math.random()*100+"vw";
-
-s.style.top=Math.random()*100+"vh";
-
-s.style.animationDelay=Math.random()*2+"s";
-
-document.body.appendChild(s);
-
-}
-
-gift.onclick=function(){
-
-start.style.display="none";
-
-msg.style.display="block";
-
-for(let i=0;i<60;i++){
-
-let h=document.createElement("div");
-
-h.className="heart";
-
-h.innerHTML="✨";
-
-h.style.left=Math.random()*100+"vw";
-
-h.style.animationDuration=(3+Math.random()*4)+"s";
-
-document.body.appendChild(h);
-
-}
-
-if('speechSynthesis' in window){
-
-let speech=new SpeechSynthesisUtterance(
-
-"Happy Birthday Ushma Pal. Wishing you a beautiful day full of happiness. Lots of love from your Jijaji."
-
-);
-
-speech.rate=0.9;
-
-speech.pitch=1.2;
-
-speechSynthesis.speak(speech);
-
-}
-
-}
-
-</script>
+<script src="script.js"></script>
 
 </body>
+
 </html>
