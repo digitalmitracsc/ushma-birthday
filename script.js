@@ -112,3 +112,117 @@ document.getElementById("gift").addEventListener("click", function () {
     }
 
 });
+// =========================
+// FIREWORKS + BALLOONS
+// =========================
+
+// Balloons
+const balloonColors = [
+"#ff4d4d",
+"#4da6ff",
+"#66ff66",
+"#ffff66",
+"#ff66ff",
+"#ffa64d"
+];
+
+function createBalloon(){
+
+    const b = document.createElement("div");
+
+    b.innerHTML = "🎈";
+
+    b.style.position = "fixed";
+
+    b.style.left = Math.random()*100+"vw";
+
+    b.style.bottom = "-80px";
+
+    b.style.fontSize = (35+Math.random()*30)+"px";
+
+    b.style.transition = "transform 12s linear";
+
+    document.body.appendChild(b);
+
+    setTimeout(()=>{
+
+        b.style.transform =
+        `translateY(-120vh)
+         translateX(${Math.random()*200-100}px)`;
+
+    },100);
+
+    setTimeout(()=>{
+
+        b.remove();
+
+    },12000);
+
+}
+
+// Fireworks
+const fireworks = ["🎆","✨","💥","🌟","⭐"];
+
+function fireworkBlast(){
+
+    for(let i=0;i<30;i++){
+
+        let f=document.createElement("div");
+
+        f.innerHTML =
+        fireworks[Math.floor(Math.random()*fireworks.length)];
+
+        f.style.position="fixed";
+
+        f.style.left=(40+Math.random()*20)+"vw";
+
+        f.style.top=(20+Math.random()*40)+"vh";
+
+        f.style.fontSize=(25+Math.random()*25)+"px";
+
+        f.style.pointerEvents="none";
+
+        f.style.transition="all 2s ease-out";
+
+        document.body.appendChild(f);
+
+        setTimeout(()=>{
+
+            f.style.left=Math.random()*100+"vw";
+
+            f.style.top=Math.random()*100+"vh";
+
+            f.style.opacity="0";
+
+            f.style.transform=
+            `scale(${2+Math.random()*2})
+             rotate(${Math.random()*360}deg)`;
+
+        },50);
+
+        setTimeout(()=>{
+
+            f.remove();
+
+        },2200);
+
+    }
+
+}
+
+// Start celebration after gift click
+document.getElementById("gift").addEventListener("click",()=>{
+
+    // Balloons
+    for(let i=0;i<20;i++){
+
+        setTimeout(createBalloon,i*400);
+
+    }
+
+    // Fireworks
+    fireworkBlast();
+
+    setInterval(fireworkBlast,4000);
+
+});
