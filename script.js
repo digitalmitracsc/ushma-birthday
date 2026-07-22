@@ -28,6 +28,10 @@ for (let i = 0; i < 180; i++) {
 }
 
 // Gift Click
+const music = document.getElementById("bgMusic");
+music.play().catch(() => {
+  console.log("Music will start after user interaction.");
+});
 document.getElementById("gift").onclick = function () {
 
   document.getElementById("container").style.display = "none";
