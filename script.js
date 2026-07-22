@@ -1,49 +1,59 @@
+// Loader
+setTimeout(() => {
+  document.getElementById("loader").style.display = "none";
+}, 3000);
+
 // Typing Effect
 const text = "Dear USHMA PAL ✨";
-let i = 0;
-const typing = document.getElementById("typing");
+let index = 0;
 
-function typeText() {
-  if (i < text.length) {
-    typing.innerHTML += text.charAt(i);
-    i++;
-    setTimeout(typeText, 120);
+function type() {
+  if (index < text.length) {
+    document.getElementById("typing").innerHTML += text.charAt(index);
+    index++;
+    setTimeout(type, 120);
   }
 }
 
-setTimeout(typeText, 3200);
+setTimeout(type, 3200);
 
-// Create Stars
-for (let s = 0; s < 120; s++) {
-  const star = document.createElement("div");
+// Stars Background
+for (let i = 0; i < 180; i++) {
+  let star = document.createElement("div");
   star.className = "star";
-  star.style.left = Math.random() * 100 + "vw";
-  star.style.top = Math.random() * 100 + "vh";
-  star.style.animationDelay = Math.random() * 2 + "s";
+  star.style.left = Math.random() * window.innerWidth + "px";
+  star.style.top = Math.random() * window.innerHeight + "px";
+  star.style.animationDelay = Math.random() * 3 + "s";
   document.body.appendChild(star);
 }
 
 // Gift Click
-const gift = document.getElementById("gift");
-
-gift.addEventListener("click", () => {
+document.getElementById("gift").onclick = function () {
 
   document.getElementById("container").style.display = "none";
+
   document.getElementById("birthday").style.display = "block";
 
-  const icons = ["✨", "⭐", "🌟", "💫"];
+  let icons = ["✨","⭐","🌟","💫"];
 
-  for (let k = 0; k < 80; k++) {
+  for (let i = 0; i < 150; i++) {
 
-    let sp = document.createElement("div");
-    sp.className = "sparkle";
-    sp.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+    let s = document.createElement("div");
 
-    sp.style.left = Math.random() * 100 + "vw";
-    sp.style.bottom = "-20px";
-    sp.style.animationDuration = (3 + Math.random() * 4) + "s";
+    s.className = "sparkle";
 
-    document.body.appendChild(sp);
+    s.innerHTML = icons[Math.floor(Math.random()*icons.length)];
+
+    s.style.left = Math.random()*100+"vw";
+
+    s.style.bottom = "-50px";
+
+    s.style.fontSize = (20+Math.random()*25)+"px";
+
+    s.style.animationDuration=(3+Math.random()*4)+"s";
+
+    document.body.appendChild(s);
+
   }
 
-});
+};
