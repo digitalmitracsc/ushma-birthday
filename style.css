@@ -1,0 +1,212 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+height:100vh;
+overflow:hidden;
+background:linear-gradient(135deg,#000428,#004e92,#000);
+background-size:400% 400%;
+animation:bgMove 15s ease infinite;
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+@keyframes bgMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+#loader{
+position:fixed;
+inset:0;
+background:#000;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+animation:hideLoader 3s forwards;
+}
+
+.loader-text{
+font-size:28px;
+color:#FFD700;
+animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+50%{
+transform:scale(1.08);
+opacity:.6;
+}
+}
+
+@keyframes hideLoader{
+0%,90%{
+opacity:1;
+visibility:visible;
+}
+100%{
+opacity:0;
+visibility:hidden;
+}
+}
+
+#container{
+position:relative;
+z-index:2;
+}
+
+.small{
+font-size:22px;
+margin-bottom:20px;
+color:#FFD700;
+}
+
+#typing{
+font-size:52px;
+text-shadow:0 0 20px gold;
+margin-bottom:40px;
+min-height:70px;
+}
+
+#gift{
+font-size:120px;
+cursor:pointer;
+transition:.5s;
+animation:giftJump 2s infinite;
+}
+
+#gift:hover{
+transform:scale(1.15) rotate(10deg);
+}
+
+@keyframes giftJump{
+50%{
+transform:translateY(-15px);
+}
+}
+
+.tap{
+margin-top:15px;
+font-size:22px;
+color:#ddd;
+}
+
+#birthday{
+display:none;
+position:absolute;
+z-index:3;
+animation:fadeIn 2s;
+padding:20px;
+}
+
+#birthday h1{
+font-size:55px;
+color:#FFD700;
+text-shadow:0 0 20px gold;
+}
+
+#birthday h2{
+margin-top:20px;
+font-size:46px;
+letter-spacing:3px;
+color:white;
+text-shadow:0 0 25px cyan;
+}
+
+.cake{
+font-size:120px;
+margin:25px 0;
+animation:cake 1.5s infinite alternate;
+}
+
+@keyframes cake{
+to{
+transform:scale(1.1);
+}
+}
+
+#birthday p{
+font-size:24px;
+line-height:1.8;
+}
+
+#message{
+margin-top:35px;
+font-size:28px;
+color:#FFD700;
+text-shadow:0 0 15px gold;
+}
+
+.star{
+position:absolute;
+width:3px;
+height:3px;
+background:white;
+border-radius:50%;
+animation:twinkle 2s infinite;
+}
+
+@keyframes twinkle{
+50%{
+opacity:.2;
+transform:scale(.5);
+}
+}
+
+.sparkle{
+position:absolute;
+font-size:24px;
+animation:floatUp linear forwards;
+}
+
+@keyframes floatUp{
+0%{
+transform:translateY(0);
+opacity:1;
+}
+100%{
+transform:translateY(-110vh);
+opacity:0;
+}
+}
+
+@media(max-width:768px){
+
+#typing{
+font-size:36px;
+}
+
+#gift{
+font-size:90px;
+}
+
+#birthday h1{
+font-size:38px;
+}
+
+#birthday h2{
+font-size:32px;
+}
+
+#birthday p{
+font-size:18px;
+}
+
+.cake{
+font-size:90px;
+}
+
+#message{
+font-size:22px;
+}
+
+}
