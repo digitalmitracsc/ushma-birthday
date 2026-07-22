@@ -1,21 +1,17 @@
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,Helvetica,sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 body{
-height:100vh;
-overflow:hidden;
-background:linear-gradient(135deg,#000428,#004e92,#000);
-background-size:400% 400%;
-animation:bgMove 15s ease infinite;
-color:white;
-display:flex;
-justify-content:center;
-align-items:center;
-text-align:center;
+    font-family:Arial,Helvetica,sans-serif;
+    background:linear-gradient(180deg,#020111,#061539,#0a2a52,#020111);
+    background-size:400% 400%;
+    animation:bgMove 18s ease infinite;
+    overflow:hidden;
+    color:#fff;
+    height:100vh;
 }
 
 @keyframes bgMove{
@@ -25,20 +21,20 @@ text-align:center;
 }
 
 #loader{
-position:fixed;
-inset:0;
-background:#000;
-display:flex;
-justify-content:center;
-align-items:center;
-z-index:9999;
-animation:hideLoader 3s forwards;
+    position:fixed;
+    inset:0;
+    background:#000;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
 }
 
-.loader-text{
-font-size:28px;
-color:#FFD700;
-animation:pulse 1.5s infinite;
+#loader h1{
+    color:#FFD700;
+    font-size:32px;
+    animation:pulse 1.5s infinite;
+    text-align:center;
 }
 
 @keyframes pulse{
@@ -48,47 +44,41 @@ opacity:.6;
 }
 }
 
-@keyframes hideLoader{
-0%,90%{
-opacity:1;
-visibility:visible;
-}
-100%{
-opacity:0;
-visibility:hidden;
-}
-}
-
-#container{
-position:relative;
-z-index:2;
+#main{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+text-align:center;
+width:100%;
+padding:20px;
 }
 
 .small{
-font-size:22px;
-margin-bottom:20px;
+font-size:24px;
 color:#FFD700;
+margin-bottom:20px;
 }
 
 #typing{
 font-size:52px;
+min-height:70px;
 text-shadow:0 0 20px gold;
 margin-bottom:40px;
-min-height:70px;
 }
 
 #gift{
-font-size:120px;
+font-size:110px;
 cursor:pointer;
-transition:.5s;
-animation:giftJump 2s infinite;
+animation:giftFloat 2s ease-in-out infinite;
+transition:.3s;
 }
 
 #gift:hover{
-transform:scale(1.15) rotate(10deg);
+transform:scale(1.15);
 }
 
-@keyframes giftJump{
+@keyframes giftFloat{
 50%{
 transform:translateY(-15px);
 }
@@ -99,55 +89,87 @@ margin-top:15px;
 font-size:22px;
 color:#ddd;
 }
+/* =========================
+   BIRTHDAY SCREEN
+========================= */
 
 #birthday{
 display:none;
 position:absolute;
-z-index:3;
-animation:fadeIn 2s;
-padding:20px;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+text-align:center;
+width:90%;
+max-width:700px;
+padding:30px;
+border-radius:25px;
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(10px);
+box-shadow:0 0 35px rgba(255,215,0,.4);
+animation:fadeIn 1.5s ease;
 }
 
-#birthday h1{
-font-size:55px;
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translate(-50%,-40%);
+}
+to{
+opacity:1;
+transform:translate(-50%,-50%);
+}
+}
+
+.title{
+font-size:52px;
 color:#FFD700;
-text-shadow:0 0 20px gold;
+text-shadow:0 0 25px gold;
+margin-bottom:15px;
 }
 
 #birthday h2{
-margin-top:20px;
-font-size:46px;
+font-size:42px;
 letter-spacing:3px;
-color:white;
-text-shadow:0 0 25px cyan;
+margin-bottom:20px;
+color:#ffffff;
+text-shadow:0 0 20px cyan;
 }
 
 .cake{
-font-size:120px;
-margin:25px 0;
-animation:cake 1.5s infinite alternate;
+font-size:100px;
+margin:20px 0;
+animation:cakeJump 1.5s infinite alternate;
 }
 
-@keyframes cake{
+@keyframes cakeJump{
+from{
+transform:translateY(0);
+}
 to{
-transform:scale(1.1);
+transform:translateY(-12px);
 }
 }
 
-#birthday p{
-font-size:24px;
+.wish{
+font-size:22px;
 line-height:1.8;
+margin-top:20px;
 }
 
-#message{
+.from{
 margin-top:35px;
-font-size:28px;
+font-size:26px;
 color:#FFD700;
 text-shadow:0 0 15px gold;
 }
 
+/* =========================
+   STARS
+========================= */
+
 .star{
-position:absolute;
+position:fixed;
 width:3px;
 height:3px;
 background:white;
@@ -162,9 +184,14 @@ transform:scale(.5);
 }
 }
 
+/* =========================
+   SPARKLES
+========================= */
+
 .sparkle{
-position:absolute;
+position:fixed;
 font-size:24px;
+pointer-events:none;
 animation:floatUp linear forwards;
 }
 
@@ -174,39 +201,137 @@ transform:translateY(0);
 opacity:1;
 }
 100%{
-transform:translateY(-110vh);
+transform:translateY(-120vh);
 opacity:0;
 }
 }
+/* ===========================
+   SHOOTING STAR
+=========================== */
+
+.shooting-star{
+position:fixed;
+width:120px;
+height:2px;
+background:linear-gradient(to right,white,transparent);
+transform:rotate(-35deg);
+animation:shoot 5s linear infinite;
+opacity:.8;
+}
+
+@keyframes shoot{
+
+0%{
+top:-10%;
+left:-20%;
+opacity:0;
+}
+
+10%{
+opacity:1;
+}
+
+100%{
+top:120%;
+left:120%;
+opacity:0;
+}
+
+}
+
+/* ===========================
+   GLOW EFFECTS
+=========================== */
+
+#gift{
+
+filter:drop-shadow(0 0 20px gold);
+
+}
+
+.title{
+
+animation:titleGlow 2s infinite alternate;
+
+}
+
+@keyframes titleGlow{
+
+from{
+
+text-shadow:
+0 0 10px gold,
+0 0 20px gold;
+
+}
+
+to{
+
+text-shadow:
+0 0 20px gold,
+0 0 40px orange,
+0 0 60px gold;
+
+}
+
+}
+
+/* ===========================
+   MOBILE
+=========================== */
 
 @media(max-width:768px){
 
 #typing{
-font-size:36px;
+
+font-size:34px;
+
+}
+
+.small{
+
+font-size:18px;
+
 }
 
 #gift{
-font-size:90px;
+
+font-size:85px;
+
 }
 
-#birthday h1{
-font-size:38px;
+.title{
+
+font-size:34px;
+
 }
 
 #birthday h2{
-font-size:32px;
-}
 
-#birthday p{
-font-size:18px;
+font-size:28px;
+
 }
 
 .cake{
-font-size:90px;
-}
 
-#message{
-font-size:22px;
-}
+font-size:80px;
 
 }
+
+.wish{
+
+font-size:18px;
+
+}
+
+.from{
+
+font-size:20px;
+
+}
+
+}
+
+/* ===========================
+   END
+=========================== */
